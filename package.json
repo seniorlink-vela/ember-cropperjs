@@ -23,11 +23,11 @@
     "test:all": "ember try:each"
   },
   "dependencies": {
-    "broccoli-funnel": "^2.0.0",
-    "broccoli-merge-trees": "^3.0.0",
-    "cropperjs": "~1.4.1",
-    "ember-auto-import": "^1.2.13",
-    "ember-cli-babel": "^7.26.6",
+    "broccoli-funnel": "^3.0.8",
+    "broccoli-merge-trees": "^4.2.0",
+    "cropperjs": "^1.6.2",
+    "ember-auto-import": "^2.10.0",
+    "ember-cli-babel": "^8.2.0",
     "ember-cli-htmlbars": "^6.1.1"
   },
   "engines": {

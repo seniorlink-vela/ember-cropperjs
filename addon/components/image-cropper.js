@@ -1,8 +1,7 @@
-import { assign } from '@ember/polyfills';
-import { compare } from '@ember/utils';
-import { join, scheduleOnce } from '@ember/runloop';
-import { setProperties, set, get } from '@ember/object';
 import Component from '@ember/component';
+import { get, set, setProperties } from '@ember/object';
+import { join, scheduleOnce } from '@ember/runloop';
+import { compare } from '@ember/utils';
 import layout from '../templates/components/image-cropper';
 
 // Properties that do not require a new Cropper instance, rather just need to call
@@ -72,7 +71,7 @@ export default Component.extend({
 
   init() {
     this._super(...arguments);
-    
+
     if (window && window.document) {
       import('cropperjs').then((module) => {
         this._Cropper = module.default;
@@ -120,7 +119,7 @@ export default Component.extend({
 
         _cropper.destroy();
 
-        const opts = assign({}, options);
+        const opts = Object.assign({}, options);
         const source = get(this, 'source');
         const image = document.getElementById(`image-cropper-${get(this, 'elementId')}`);
         const newCropper = new this._Cropper(image, opts)
@@ -165,7 +164,7 @@ export default Component.extend({
       }
     }
 
-    set(this, '_prevOptions', assign({}, options));
+    set(this, '_prevOptions', Object.assign({}, options));
   },
 
   willDestroyElement() {
@@ -186,7 +185,7 @@ export default Component.extend({
       const options = get(this, 'options');
 
       // Need a copy because Cropper does not seem to like the Ember EmptyObject that is created from the `{{hash}}` helper
-      const opts = assign({}, options);
+      const opts = Object.assign({}, options);
 
       setProperties(this, {
         _cropper: new this._Cropper(image, opts),
